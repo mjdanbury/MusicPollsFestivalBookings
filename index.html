@@ -33,7 +33,8 @@
   <body>
     <h2>Hip-Hop, Gender, and the Music Industry: Questions and Insights from Polls and Festival Bookings</h2>
     <h5>by Matthew Danbury, INFO 3300</h5>
-    <p> In 2019, <a href="http://www.bbc.com/culture/story/20191007-the-greatest-hip-hop-songs-of-all-time">BBC Music polled</a> over 100 critics, artists, tastemakers, producers, and photographers from 15 different countries to name their personal top five hip-hop tracks of all time. Most notably, there are embarissingly few songs by female hip-hop artists accounted for here. While BBC addresses this <a href="http://www.bbc.com/culture/story/20191007-why-are-there-so-few-women-in-best-of-hip-hop-polls">in a followup article</a> the data themselves demonstrate how, when asked to name songs they thought to be commemerative of the genre, the poll's responders overwhelmingly chose songs from male artists. This falls in line with a long tradition of reserving titles such as "greatest of all time", "influencer", or "genuis" as honorifiics to be bestowed on males. I encourage the viewer to interact with and enjoy the content presented here, while keeping in mind that these selections are far from representative of the genre, and that ranking system suffers from a large degree of bias.</p>
+    <p>I will start by saying I am firm believer that here is no such thing as "good taste" or "bad taste", only your ability to insightfully reflect upon your preferences and articulate why they are the way they are. Therefore, I think that it kind of defeats the point of polling critics if they aren't allowed to provide any critical insight into why they ranked their choices the way they did. I have sought to remedy this to some extent by adding Spotify track ID's to each data entry and embedding a media player that loads each track that appeared in the study when you hovers over the corresponding datapoint in the scatterplot. I encourage you to take these subjective rankings with a grain of salt and form your own opinions as you go along.</p>
+    <p>The dataset itself had three features for each track selected by the critics: the year it was released, the aggregate score it received in the poll, and wether the artist was male, female, or a combination act. I have visualized these features in an interactive scatter plot that lets you select two of these features at a time to compare.</p>
     <div>
         <span>X axis:</span>
         <select id="x-select"> </select>
@@ -46,9 +47,9 @@
     <svg id="multivar" width="600" height="600">
     </svg>
     <iframe id="webplayer" src="https://open.spotify.com/embed/track/6KBYefIoo7KydImq1uUQlL" width="450" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
-
-
+    <p>A good question to start with is if these data even seem reasonable. As someone who follows music casually, I know that sometimes individual artists or even individual tracks can have a profound impact on shaping a genre for decades to come. Sorting by (year, points), you can see that the highest scores from the poll appear to be concentrated in the first half of the timeframe depicted. This matches nicely with my  expectation, lending some degree of credibility to the dataset. </p>
+    <p>Sorting by (year, year) we see that the points appear most dense between 1990 and 2005, indicating that those polled tended to disproportionately cite tracks from this timeframe as the some of the best of all time. This gives you an empirical "golden-era of hip-hop" if you will. </p>
+    <p>Sorting by (points, gender) we see that every single track that got a score of 40 or higher, was recorded by a male act. I think this demonstrates an implicit cultural bias where traits like "trailblazer", "visionary", or "genius" tend to be applied to male persons. Moreover, sorting by (year, gender) we see that we don't actually see which might challenge any narrative of an inevitable march towards progress and inclusivity.</p>
     <script type="text/javascript">
 
       const requestData = async function(){
