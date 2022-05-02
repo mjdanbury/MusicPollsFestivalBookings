@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hip-Hop, Gender, and the Music Industry: Questions and Insights from Polls and Festival Bookings</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="skeleton.css">
+    <style media="screen">
+    body{
+    	background: #FFD7B4;
+    }
+
+    text.axis {
+      text-anchor: end;
+      font-variant: all-small-caps;
+    }
+    #m {
+      background: #3CF7D7;
+      background-opacity: 0.4;
+    }
+    #f {
+      background: #FDE53A;
+    }
+    #mix {
+      background: #FA5929;
+    }
+    #nb{
+      background: #BA55D3;
+    }
+    </style>
+  </head>
+  <body>
+    <h2>Hip-Hop, Gender, and the Music Industry: Questions and Insights from Polls and Festival Bookings</h2>
+    <h5>by Matthew Danbury, INFO 3300</h5>
+    <p> In 2019, <a href="http://www.bbc.com/culture/story/20191007-the-greatest-hip-hop-songs-of-all-time">BBC Music polled</a> over 100 critics to name their personal top five hip-hop tracks of all time. 
+      To the 310 songs the critics named, the poll awarded 10 (respectively 8,6,4,2) points to a song for being someone's first (respectively second, third, fourth, fifth) choice and summed these points to
+      give each track a single score. The dataset BBC Music released had two additional features for each track: the year it was released and wether the artist was male, female, or a combined act. 
+      I have chosen to visualize  these features in an interactive scatterplot that lets you select two of these features at a time to compare.</p>
+
+    <p>Now before diving into the results, I will say that I am of the opinion is no such thing as "good taste" or "bad taste", only your ability to insightfully
+      reflect upon your preferences and articulate why they are the way they are. To that end, I find reducing the process of reviewing music to a scalar valued function 
+      strips away most of the value their work. What follows must be understood as a very coarse picture of the genre, with no argument to back its inherent subjectivity. 
+      Because of this, I have tried to provide you the next best thing: the ability to listen to each track as you go along and form opinions for yourself. </p>
+
+    <div>
+        <span>X axis:</span>
+        <select id="x-select"> </select>
+        <span>Y axis:</span>
+        <select id="y-select"> </select>
+
+    </div>
+    <h5 id="label">"Bodak Yellow", Cardi B, (2017)</h5>
+    <h6><span id="m">Male Act</span> <span id="f">Female Act</span> <span id="mix">Combined Act</span></h6>
+    <svg id="multivar" width="600" height="600">
+    </svg>
+    <iframe id="webplayer" src="https://open.spotify.com/embed/track/6KBYefIoo7KydImq1uUQlL" width="450" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    <p> One thing that's worth discussing is the degree of consensus amongst the poll's respondents. Since the responses could have contained anywhere from 5 tracks (perfect consensus) to 500 tracks
+      (no consensus whatsoever), the fact that there were 310 indicates there was some ammount of agreement, but also a strong degree of diversity in tastes and opinions. We can also see this in the 
+      scatterplot, where if we sort by (points, points) there are a small number of high scoring outliers where consensus emerged, and a much larger cluster of lower scoring tracks, representing the 
+      plurality of tastes. Of the 310 tracks selected, there were 207 unique artists, meaning some artists had multiple tracks which some critics considered to be the best of all time. This raises the
+      interesting possibility that were the question rephrased as "Who are the 5 greatest hip-hop artists of all time?" we could have expected considerably more agreement. </p>
+
+    <p>The next aspect I'll touch on is the distribution of the responses over time. Sorting by (year, points) on the scatterplot, we can see that the highest scores from the poll appear to be concentrated 
+      between 1980 and 1995. From my own experience following music, I've know that oftentimes individual artists or even individual tracks can have a profound impact on shaping a new genre for decades to come,
+      so it is no surpise and a nice sanity check that this pattern showed up in the critics' responses. We also see that the dataset is the most dense between 1990 and 2005 (this can be confirmed by sorting by 
+      (year, year)). I'm not exactly sure how to interpret this. One possible explanation would be that as the genre itself grew in size and popularity, artists began to carve out their own stylistic niches and 
+      expiriment with taking their sound in new directions. Such a stylistic diversity would presumably generate a diversity of critical opinions with it. That said, I can't rule out other factors, such as the 
+      average age of the critics polled, or perhaps a hesitiancy on their part to give more recent tracks the superlative "greatest of all time". </p>
+
+      
+    <p>Sorting by (points, gender) we see that of the 310 tracks selected, a mere 23 were recorded by all-female hip-hop artists, and a mere 20 were recorded by combined male and female acts. Furthermore, 
+      every single track that recieved a score of 40 or higher, was recorded by a male artist. Moreover, sorting by (year, gender) we see that these proportions were relatively stable over the timeframe 
+      being depicted. BBC Music wrote a <a href="https://www.bbc.com/culture/article/20191007-why-are-there-so-few-women-in-best-of-hip-hop-polls">followup piece</a> on this striking disparity and considered
+      possible explanations for "why hip-hop continues to shut women out". Two contributing factors the article cites are that "historically, men appear to listen to rap music more than women" and that the people
+      in the music industry who "have control over who receives publicity and financial backing" are predominatly men. To investigate these two hypotheses, I consulted a <a href="https://pitchfork.com/features/festival-report/tracking-the-gender-balance-of-this-years-music-festival-lineups/">2018 article from Pitchfork</a>
+      looking at the gender balance of music festival bookings in 2017 versus 2018. As their findings (reproduced below) show, a similar disparity exists beyond just the hip-hop genre. This lends credibility to 
+      the argument that supporting female artists means having women represented behind the scenes in the music industry as well. </p>
+
+    <img src="GenderBreakdown.jpg" alt="Test" width="1000">
+    <p>Credit: Rob Mitchum and Diego Garcia-Olano, Pitchfork</p>
+
+    <p>To conclude, I think it bears mentioning the things these data cannot tell us. Just as song rankings offer no insight as to why a critic found them significant, these demographic stats can't speak for 
+      the obstacles female artists face in the music industry. I was surprised that neither the BBC Music followup nor the Pitchfork article bothered to interview any female artists to how gender has has an 
+      impact on their careers as professional musicians. Were I to continue to investigate this story, this is the direction I would take first, as hearing a plurality of first hand experiences could yeild
+      insights that these data do not. This brings me to another point: though gender is neither a binary nor a monolith, treating it as a boolean or catagorical variable in a data graphic represents it as 
+      such. This stood out to me immediately in Pitchfork festivals graphic, where several of the festivals listed had artists perform who openly identify as nonbinary or gender non-conforming, yet the graphic
+      only has labels for 'Male', 'Female', and 'Mixed'. While data can yeild new insights on certain issues, it can have a flattening effect on others. It can enhance, but not replace thourough reporting and 
+      thoughtful writing.</p>
+    <script type="text/javascript">
+
+      const requestData = async function(){
+
+        const hipHopDat = await d3.csv("hip-hop-rankings.csv", d3.autoType);
+        console.log(hipHopDat);
+
+        let layer = d3.select("#multivar").append('g');
+        let chartWidth = d3.select("#multivar").attr("width");
+        let chartHeight = d3.select("#multivar").attr("height");
+        let padding = 80;
+
+        // our 3 variables are points, year, and gender
+        const pointsExtent = d3.extent(hipHopDat, d => d.points);
+        const yearExtent = d3.extent(hipHopDat, d => d.year);
+
+        const pointScaleX = d3.scaleLinear().domain(pointsExtent).range([padding,chartWidth-padding]);
+        const yearScaleX = d3.scaleLinear().domain(yearExtent).range([padding,chartWidth-padding]);
+        const genderScaleX = d3.scalePoint().domain(["male","female","combo"]).range([padding,chartWidth-padding]);
+
+        const pointScaleY = d3.scaleLinear().domain(pointsExtent).range([chartHeight-padding,padding]);
+        const yearScaleY = d3.scaleLinear().domain(yearExtent).range([chartHeight-padding,padding]);
+        const genderScaleY = d3.scalePoint().domain(["male","female","combo"]).range([chartHeight-padding,padding]);
+
+        const genderColorScale = d3.scaleOrdinal().domain(["male","female","combo"]).range(["#3CF7D7","#FDE53A","#FA5929"]);
+
+        hipHopDat.forEach( d => {
+          d.x = d3.randomUniform(10,chartWidth-10)();
+          d.y = d3.randomUniform(10,chartHeight-10)();
+        });
+
+        layer.selectAll("circle").data(hipHopDat)
+             .join("circle")
+             .attr("id", d => d["ID"])
+             .attr("r",4)
+             .attr("cx", d => d.x)
+             .attr("cy", d => d.y)
+             .attr("stroke-width",1)
+             .attr("stroke","black")
+             .attr("fill", d => genderColorScale(d.gender));
+
+        layer.selectAll("circle").data(hipHopDat)
+             .on("mouseover", function(d, i){
+               //console.log(this);
+               d3.select("#label")
+                 .text('"'+d.title+'"'+', '+d.artist+', '+'('+d.year+')')
+              d3.select(this)
+                .attr("r",6);
+              })
+            .on("mouseout", function(d, i){
+              d3.select(this)
+                .attr("r",4);
+              d3.select("#label")
+                .text('Click on a song to listen to listen to it.');
+            })
+           .on("click", function(d, i){
+             let songId = d.spotify;
+             d3.selectAll("circle")
+               .attr("fill", s => (s.artist === d.artist) ? "#bbb": genderColorScale(s.gender));
+             d3.select(this)
+               .attr("fill", "#bbb");
+
+             d3.select("#webplayer")
+               .attr("src", "https://open.spotify.com/embed/track/"+songId);
+           })
+
+        var sim = d3.forceSimulation()
+                    .nodes(hipHopDat)
+                    .force("collision", d3.forceCollide()
+                                          .radius(4.5)
+                                          .iterations(2) )
+                    .force("xpos", d3.forceX()
+                                     .x( d => yearScaleX(d.year) )
+                                     .strength( 0.05 ) )
+                    .force("ypos", d3.forceY()
+                                     .y( d => pointScaleY(d.points) )
+                                     .strength( 0.05 ) )
+
+                   .on("tick", update);
+
+         function update(){
+           layer.selectAll("circle").attr("cx", d => d.x).attr("cy", d => d.y);
+         }
+
+         let xAxis = d3.select("#multivar")
+                       .append("g").attr("class","x-axis")
+                       .attr("transform","translate("+(0)+","+(chartHeight-padding/2.0)+")")
+
+         xAxis.call( d3.axisBottom(yearScaleX).tickFormat(d3.format("~f")) );
+
+         let yAxis = d3.select("#multivar")
+                       .append("g").attr("class","y-axis")
+                       .attr("transform","translate("+(padding/2.0)+","+(0)+")")
+         yAxis.call( d3.axisLeft(pointScaleY) );
+
+
+
+         const xScales = {
+           'year': yearScaleX,
+           'points': pointScaleX,
+         }
+
+         const yScales = {
+           'points': pointScaleY,
+           'year': yearScaleY,
+           'gender': genderScaleY
+         }
+
+         var xDropdown = d3.select("#x-select");
+         var yDropdown = d3.select("#y-select");
+
+         d3.keys(xScales).forEach(d => {
+           xDropdown.append("option").text(d).attr("value", d);
+         });
+
+         d3.keys(yScales).forEach(d => {
+           yDropdown.append("option").text(d).attr("value", d);
+         });
+
+         xDropdown.on("change", updateX);
+
+         function updateX() {
+
+           let attribute = d3.select(this).property("value");
+           console.log(attribute)
+           let scale = xScales[attribute];
+
+           // Axis labels
+           xAxis.html(null);
+           xAxis.call( d3.axisBottom(scale).tickFormat(d3.format("~f")));
+
+           //simulation
+           sim.force("xpos")
+              .x( d => scale(d[attribute]));
+           sim.alpha(1);
+           sim.restart();
+
+         }
+
+         yDropdown.on("change", updateY);
+
+         function updateY() {
+
+           let attribute = d3.select(this).property("value");
+           console.log(attribute)
+           let scale = yScales[attribute];
+
+           // Axis labels
+           yAxis.html(null);
+           yAxis.call( d3.axisLeft(scale));
+
+           //simulation
+           sim.force("ypos")
+              .y( d => scale(d[attribute]));
+           sim.alpha(1);
+           sim.restart();
+
+         }
+
+      }
+
+      requestData();
+
+
+    </script>
+
+  </body>
+</html>
